@@ -8,5 +8,21 @@
  * @returns {Array<number>}
  */
 module.exports.replacement = function replacement(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  for (let i = 0; i < arr.length; i++) {
+
+    if(Math.abs(arr[i]) <= 9){ // если 1
+      arr[i] = 1;
+    }
+    else if(Math.abs(arr[i]) <= 99){ // если 2
+      arr[i] = 2;
+    }
+    else if(Math.abs(arr[i]) <= 999){ // если 3
+      arr[i] = 3;
+    }
+    else{ // если 4
+      arr[i] = 4;
+    }
+  }
+
+  return arr;
 };

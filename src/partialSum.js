@@ -12,5 +12,19 @@
  * @returns {Object}
  */
 module.exports.partialSum = function partialSum(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
+
+  let result = [];
+  let subResult; // создание массива и промежуточной перменной
+
+  for (let i = 0; i < arr.length; i++) { // цикл для перебора эллементов result
+    subResult = 0; // обнуление промежуточной переменной
+
+    for (let j = 0; j <= i; j++) { // цикл для заполнения промежуточной перменной путем перебора arr до текущего значения i
+      subResult += arr[j];
+    }
+
+    result.push(subResult);
+  }
+
+  return result;
 };

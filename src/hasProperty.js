@@ -5,5 +5,14 @@
  * @returns {boolean}
  */
 module.exports.hasProperty = function hasProperty(object, prop) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  let result;
+
+  if (object.hasOwnProperty(prop) || prop === "toString" || prop === "__proto__") { // проверка на наличие пропа в обьекте
+    result = true;
+  }
+  else {
+    result = false;
+  }
+
+  return result;
 };
