@@ -5,7 +5,7 @@
  */
 module.exports.primeNumbers = function primeNumbers(highestNumber) {
   return function allPrimeBetweenTwo(start, end) {
-    let result = [];
+    const result = [];
     let temp;
 
     for (let i = start; i <= end; i++) { // цыкл для перебора значений от начала до конца

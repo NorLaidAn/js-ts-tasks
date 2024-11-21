@@ -25,7 +25,7 @@ module.exports.censorship = function censorship(forbidden) {
       secsessful = false;
 
       for (let j = 0; j < forbidden.length; j++) { // перебирают forbiden j(масив строк) и k(буквы каждой строки)
-          let firstValue =  0;
+          const firstValue =  0;
           isSuccess = false;
 
           if (str[i] === forbidden[j][firstValue]){ // сравнивает букву из str с каждой первой буквой каждого эллемента масива forbiden
