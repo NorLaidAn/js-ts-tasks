@@ -14,5 +14,53 @@
  * @returns {function}
  */
 module.exports.censorship = function censorship(forbidden) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function (str) {
+    let result = '';
+    let temp = '';
+    let isSuccess;
+    let x;
+    let secsessful; // обьявление перменных
+
+    for (let i = 0, len = str.length; i < len; i++) { // перебирает буквы str
+      secsessful = false;
+
+      for (let j = 0; j < forbidden.length; j++) { // перебирают forbiden j(масив строк) и k(буквы каждой строки)
+          let firstValue =  0;
+          isSuccess = false;
+
+          if (str[i] === forbidden[j][firstValue]){ // сравнивает букву из str с каждой первой буквой каждого эллемента масива forbiden
+            temp = '';
+            x = i; // для момента когда первая буква совподает а остальные нет, дабы не скипать букввы str
+
+            for (let k2 = 0; k2 < forbidden[j].length; k2++) { // перебирает буквы эллементов forbiden полностью
+              if (str[x] === forbidden[j][k2]){ // набирает темп для строки
+                temp += '*';
+                x++;
+              }
+
+              if (temp.length === forbidden[j].length){ // проверяет успешно ли нахождение строки
+                isSuccess = true;
+              }
+            }
+
+
+            if (isSuccess === true && temp.length > 1){ // если да то добовляет в резалт темп
+              result += temp;
+              i += temp.length - 1;
+              secsessful = true;
+            }
+            if (isSuccess === true && temp.length === 1){ // для значений равных единице
+              result += temp;
+              secsessful = true;
+            }
+          }
+      }
+
+      if (secsessful === false){ // если нет то символ
+        result += str[i];
+      }
+    }
+
+    return result;
+  }
 };

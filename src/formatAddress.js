@@ -4,5 +4,18 @@
  * @returns {function}
  */
 module.exports.formatAddress = function formatAddress() {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function formatter(object) {
+    let result = '';
+
+    for (let key in object) {
+      if(key === 'country'){ // последний кей для запятой
+        result += object[key];
+      }
+      else{
+        result += object[key] + ', ';
+      }
+    }
+
+    return result;
+  }
 };

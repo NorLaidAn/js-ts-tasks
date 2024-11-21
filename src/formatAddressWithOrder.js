@@ -9,5 +9,27 @@
  * @returns {function}
  */
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function Formater(object) {
+    let result = '';
+    let counter = 0;
+    const start = 0;
+
+    for (let key1 in order) {
+      for (let key2 in object) {
+
+        if(order[key1] === key2) {
+          if(counter === start) { // проврка для запятой
+            result += object[key2];
+            counter += 1;
+          }
+          else{
+            result += `, ${object[key2]}`;
+            counter += 1;
+          }
+        }
+      }
+    }
+
+    return result;
+  }
 };
