@@ -23,5 +23,17 @@
  * @returns {function}
  */
 module.exports.payments = function payments(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+  return function calculation(obj1, obj2) {
+    let income = 0;
+    let outcome = 0;
+
+    for (var key in obj1) { // перебор значений в обьекте 1 и скидываем в 1 переменную
+      income += obj1[key];
+    }
+    for (let key in obj2) { // тоже самое что сверху но другой обьект
+      outcome += obj2[key];
+    }
+
+    return income - outcome;
+  }
 };

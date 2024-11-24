@@ -13,5 +13,15 @@
  * @returns {function}
  */
 module.exports.palindrome = function palindrome(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+  return function transformer(str) {
+    str = str.replaceAll(/[^a-zA-Z0-9]/g, ''); // я загуглил такую интересную вещь как a-z A-Z 0-9, означают все символы от такого до такого, /g - нужен для реплейса не 1 значения в строке а всех , а ещё узнал что для глобальной замены не пойдет метод replaceAll()
+    str = str.toLowerCase();
+
+    for (var i = 0; i < (str.length / 2); i++) {
+      if(str[i] !==  str[(str.length - 1) - i]) {
+        return false;
+      }
+    }
+    return true;
+  }
 };

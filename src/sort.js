@@ -9,5 +9,14 @@
  * @returns {function}
  */
 module.exports.sort = function sort(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+  return function sorting(...smth) {
+    if (typeof smth[0] === "object") { // использовал ... для сортировки не самих обьектов а значений внутри обьектов
+      [...smth].sort().reverse();
+      return smth;
+    }
+    else {
+      smth.sort().reverse();
+      return smth;
+    }
+  }
 };
