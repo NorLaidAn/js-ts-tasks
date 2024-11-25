@@ -9,14 +9,8 @@
  * @returns {function}
  */
 module.exports.sort = function sort(TestUtils) {
-  return function sorting(...smth) {
-    if (typeof smth[0] === "object") { // использовал ... для сортировки не самих обьектов а значений внутри обьектов
-      [...smth].sort().reverse();
-      return smth;
-    }
-    else {
-      smth.sort().reverse();
-      return smth;
-    }
-  }
+  return function(...smth) {
+    return smth.sort(TestUtils.sortComparator);
+  };
 };
+

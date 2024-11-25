@@ -24,16 +24,6 @@
  */
 module.exports.payments = function payments(TestUtils) {
   return function calculation(obj1, obj2) {
-    let income = 0;
-    let outcome = 0;
-
-    for (var key in obj1) { // перебор значений в обьекте 1 и скидываем в 1 переменную
-      income += obj1[key];
-    }
-    for (let key in obj2) { // тоже самое что сверху но другой обьект
-      outcome += obj2[key];
-    }
-
-    return income - outcome;
-  }
+    return TestUtils.sumAllObjectProperties.call(obj1) - TestUtils.sumAllObjectProperties.call(obj2);
+  };
 };
