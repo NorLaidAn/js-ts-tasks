@@ -1,5 +1,46 @@
 class User {
-  // Your code for class User here
+  #firstName;
+  #secondName; // приватные поля
+  #age;
+
+  constructor(firstName, secondName, age){
+    if(typeof firstName !== 'string' || typeof secondName !== 'string' ){ //проверки на типы данных
+      throw new Error('First and second name is required');
+    }
+    if(typeof age !== 'number'){
+      throw new Error('Age must be a number');
+    }
+    this.#firstName = firstName;
+    this.#secondName = secondName; // конструктор с инициализацией полей
+    this.#age = age;
+  }
+// сеттер для имени
+  set firstName(firstName){
+    this.#firstName = firstName;
+  }
+// сеттер  для фамилии
+  set secondName(secondName){
+    return this.#secondName =  secondName;
+  }
+// сеттер и геттер для возроста
+  set age(age){
+    this.#age = age;
+  }
+  get age(){
+    return this.#age;
+  }
+// фул нейм
+  get name(){
+    return `${this.#firstName} ${this.#secondName}`;
+  }
+// и 2 функции, достаточно простые
+  introduce(){
+    return `My name is ${this.#firstName} ${this.#secondName}, I'm ${this.#age}`
+  }
+
+  celebrateBirthday(){
+    this.#age++;
+  }
 }
 
 /**
@@ -16,7 +57,7 @@ module.exports.User = User;
  * @returns {User}
  */
 module.exports.createUser = function (firstName, secondName, age) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+  return new User(firstName, secondName, age);
 };
 
 /**
@@ -25,7 +66,19 @@ module.exports.createUser = function (firstName, secondName, age) {
  * @returns {Array<User>}
  */
 module.exports.createUsers = function (data) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+  let array = [];
+
+  for (let i = 0; i < data.length; i++) { // в масиве даты перебираю обьекты и присваиваю его ключи как параметры конструктора класса обьекста, а после обьект закидываю в массив
+    array.push(
+      new User(
+        data[i].firstName,
+        data[i].secondName,
+        data[i].age
+      )
+    );
+  }
+
+  return array;
 };
 
 /**
@@ -35,7 +88,15 @@ module.exports.createUsers = function (data) {
  * @returns {Array<Users>}
  */
 module.exports.findUsersByAge = function (users, age) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+  let array = [];
+
+  for (let i = 0; i < users.length; i++) { // перебираю юзеров и сравниваю их поле age
+    if (users[i].age === age) {
+      array.push(users[i]);
+    }
+  }
+
+  return array;
 };
 
 /**
@@ -43,8 +104,10 @@ module.exports.findUsersByAge = function (users, age) {
  * @param TestUtils
  * @returns {function(*): *[]}
  */
-module.exports.createUsersSortFn = function (TestUtils) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+module.exports.createUsersSortFn = function (TestUtils) { // тут сортирую при помощи компоратора тест утилс
+  return function (usersArray){
+    return usersArray.sort(TestUtils.sortComparatorByAge);
+  }
 };
 
 /**
@@ -52,6 +115,14 @@ module.exports.createUsersSortFn = function (TestUtils) {
  * @param {Array<User>} users
  * @return {Array<User>}
  */
-module.exports.celebrate = function (users) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+module.exports.celebrate = function (users) { // перебираю юзеров возрост и сравниваю на не чётность
+  let array = [];
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i] % 2 !== 0) {
+      array.push(users[i]);
+    }
+  }
+
+  return array;
 };
