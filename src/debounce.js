@@ -5,6 +5,4 @@
  * @delay {number}
  * @return {function}
  */
-module.exports.debounce = function debounce(fn, delay) {
-  throw new Error('Not implemented'); // remove me and write your code
-};
+module.exports.debounce = function debounce(fn, delay) {};
