@@ -4,5 +4,18 @@
  * @returns {number}
  */
 module.exports.getDaysToNewYear = function getDaysToNewYear(targetDate: Date | string): number {
-  throw new Error('Not implemented'); // delete this line and write your code
+  let currentDate: Date;
+
+  if (typeof targetDate === 'string') {
+    const [day, month, year]: number[] = targetDate.split('.').map(Number);
+    currentDate = new Date(year, month - 1, day);
+  } else {
+    currentDate = targetDate;
+  }
+
+  const nextNewYear = new Date(2024, 0, 1);
+
+  const timeDifference = nextNewYear.getTime() - currentDate.getTime();
+
+  return Math.floor(timeDifference / (1000 * 3600 * 24));
 };
